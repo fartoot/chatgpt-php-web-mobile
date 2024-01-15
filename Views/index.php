@@ -27,8 +27,13 @@
                 <p>ChatGPT 4</p>
                 <div class="h-5/6 w-full overflow-auto ">
                     <?php
+                        $Parsedown = new Parsedown();
                         foreach ($data["answers"] as $answer) {
-                            echo '<p>'.$answer["answer"].'</p>';
+                            
+                            echo "<div class='block bg-white p-3 mb-2 border-2 border-slate-300 rounded-md' >";
+                            echo "<p class='mb-2 text-base font-bold'>".$answer["question"]."</p>";
+                            echo $Parsedown->text($answer["answer"]);
+                            echo "</div>";
                         }
 
                     ?>

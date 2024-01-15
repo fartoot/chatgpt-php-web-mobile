@@ -27,7 +27,8 @@
             $last_json = file_get_contents("data/".strval($last).".json");
             $data_json = json_decode($last_json, true);
             $new_data['datetime'] = date("Y-m-d H:i:s");
-            $new_data['answer'] = $message;
+            $new_data['question'] = strtoupper($message["question"]);
+            $new_data['answer'] = $message["answer"];
             array_push($data_json['answers'],$new_data);
             file_put_contents("data/".strval($last).".json", json_encode($data_json));
             

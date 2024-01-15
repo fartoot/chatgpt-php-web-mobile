@@ -14,15 +14,16 @@
         public function generate(){
 
             $client = OpenAI::client($this->key);
-            
-            $result = $client->chat()->create([
-                'model' => 'gpt-4',
-                'messages' => [
-                    ['role' => 'user', 'content' => $this->prompt],
-                ],
-            ]);
-            var_dump($result);
-            return $result->choices[0]->message->content;
+                //code...
+                $result = $client->chat()->create([
+                    'model' => 'gpt-4',
+                    // 'response_format' => array('type' => 'json_object'),
+                    'messages' => [
+                        ['role' => 'user', 'content' => $this->prompt],
+                    ],
+                ]);
+
+            return array("question" => $this->prompt, "answer" => $result->choices[0]->message->content);
         }
 
     }
