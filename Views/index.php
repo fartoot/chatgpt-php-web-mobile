@@ -25,7 +25,7 @@
         <div class="flex-auto w-3/5 bg-slate-50 py-5 px-5 lg:px-12 flex justify-center">
             <div class="lg:w-3/5 flex flex-wrap">
                 <p>ChatGPT 4</p>
-                <div class="h-5/6 w-full overflow-auto ">
+                <div class="h-5/6 w-full overflow-y-auto ">
                     <?php
                         $Parsedown = new Parsedown();
                         foreach ($data["answers"] as $answer) {

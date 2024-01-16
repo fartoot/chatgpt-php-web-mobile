@@ -16,8 +16,13 @@
         }
 
         public function create($prompt){
-            $openai = new Chatgpt($prompt);
-            $message = $openai->generate();
+            try{
+
+                $openai = Chatgpt::getInstance();
+                $message = $openai->generate($prompt);
+            } catch (\Throwable $th)  {
+                var_dump($th);
+            }
             $this->store($message);
         }
 
