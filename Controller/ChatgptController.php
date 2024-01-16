@@ -31,5 +31,4 @@
 
             return array("question" => $prompt, "answer" => $result->choices[0]->message->content);
         }
-
     }

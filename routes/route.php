@@ -17,8 +17,13 @@
 
         switch ($parent) {
             case $path:
-                $chat = new $class_name();
-                $chat->$method($prompt);
+                try {
+                    $chat = new $class_name();
+                    $chat->$method($prompt);
+                    //code...
+                } catch (\Throwable $th) {
+                    print_r($th);
+                }
                 break;
                 
             default:
