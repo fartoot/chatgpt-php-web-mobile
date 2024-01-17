@@ -10,20 +10,16 @@
         
         $url = $_SERVER["REQUEST_URI"];
         
-        $prompt = $_POST["prompt"] ;
+        $prompt = $_POST["prompt"];
+        $selectedChat = $_POST["chagpt"];
 
         $parent = explode("/",$url);
         $parent = $parent[1];
 
         switch ($parent) {
             case $path:
-                try {
                     $chat = new $class_name();
-                    $chat->$method($prompt);
-                    //code...
-                } catch (\Throwable $th) {
-                    print_r($th);
-                }
+                    $chat->$method($prompt,$selectedChat);
                 break;
                 
             default:

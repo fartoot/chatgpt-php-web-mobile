@@ -3,26 +3,28 @@
     //    use OpenAI\Client;
     class Chatgpt  {
 
-        public $key;
+        public string $key;
         public $client;
+        public array $type = array("gpt-4","gpt-3.5-turbo");
+        public int $selected = 0;
         private static $instance = null;
+
         private function __construct() {
             $this->key = $_ENV['KEY'];
             $this->client = OpenAI::client($this->key);
         }
 
         public static function getInstance(){
-            if(!self::$instance){
+            if(is_null(self::$instance)){
                self::$instance = new Chatgpt();
             }
-
             return self::$instance;
         }
 
         public function generate($prompt){
 
                 $result = $this->client->chat()->create([
-                    'model' => 'gpt-4',
+                    'model' => $this->type[$this->selected],
                     // 'response_format' => array('type' => 'json_object'),
                     'messages' => [
                         ['role' => 'user', 'content' => $prompt],
