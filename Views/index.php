@@ -59,7 +59,7 @@
                         </div>
                 </div>
 
-                <div class="h-5/6 w-full overflow-y-auto ">
+                <div id="content" class="h-5/6 w-full overflow-y-auto ">
                     <?php
                     foreach ($data["answers"] as $answer) {
                         echo "<div class='block bg-white p-3 mb-2 border-2 border-slate-300 rounded-md' >";
@@ -69,10 +69,16 @@
                     }
 
                     ?>
+                     <div id="loading" class='hidden flex m-4 space-x-2 justify-center items-center dark:invert'>
+                        <span class='sr-only'>Loading...</span>
+                        <div class='h-3 w-3 bg-slate-600 rounded-full animate-bounce [animation-delay:-0.3s]'></div>
+                        <div class='h-3 w-3 bg-slate-600 rounded-full animate-bounce [animation-delay:-0.15s]'></div>
+                        <div class='h-3 w-3 bg-slate-600 rounded-full animate-bounce'></div>
+                    </div>
                 </div>
 
                 <div class="w-full">
-                    <form action="create" method="post">
+                    <form action="create" method="post" onSubmit="return loading()" >
                         <input type="hidden" name="chagpt" id="selectedChagpt" value="<?= $chatgpt ?>" >
                         <input type="text" class="shadow-lg border-2 border-slate-300 hover:border-slate-400 active:border-slate-400 rounded-full h-16 w-full px-8" name="prompt" placeholder="Your prompt ...">
                     </form>
@@ -81,8 +87,14 @@
         </div>
     </div>
 
-<script>
+<script type="text/javascript">
     document.getElementById('chatgpt').value = <?= $chatgpt ?> ;
+    document.getElementById('content').scrollTop = 9999999;
+    
+    function loading(){
+        document.getElementById("loading").style.display = "flex";
+        document.getElementById('content').scrollTop = 9999999;
+    }
 </script>
 </body>
 
