@@ -1,9 +1,9 @@
 <?php
+    require("utilities/FileManager.php");
 
-    class JsonFileManager {
+    class JsonFileManager extends FileManager{
 
-        public string $dir;
-        public string $extension = "json";
+
         public int $latest_file;
         public array $content;
         public string $question;
@@ -13,7 +13,8 @@
         private static $instance;
 
         private function __construct($dir) {
-            $this->dir = $dir;
+            parent::__construct($dir);
+            $this->extension = "json";
         }
 
         public static function getInstance($dir){
