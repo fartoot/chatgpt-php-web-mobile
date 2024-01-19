@@ -6,11 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <script src="https://cdn.tailwindcss.com"></script>
-
-        <script>
-
-        </script>
-
 </head>
 
 <body>
@@ -51,7 +46,7 @@
                                 </div>
 
                                 <div class="hidden md:inline">
-                                        <img class="w-1/2 xl:w-1/3  mx-auto m-3" src="/imgs/QR_Code_example.png" alt="">
+                                                <img class="w-1/2 xl:w-1/3 mx-auto m-3 rounded-lg" src="imgs/qrcode.svg" alt="">
                                 </div>
                         </div>
                 </div>

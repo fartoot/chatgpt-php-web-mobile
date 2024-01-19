@@ -10,7 +10,7 @@
         public string $answer;
         public string $datetime;
 
-        private static $instance;
+        private static $instance = null;
 
         private function __construct($dir) {
             parent::__construct($dir);

@@ -2,18 +2,22 @@
 
     require("utilities/View.php");
     require("utilities/JsonFileManager.php");
+    require("utilities/QrCodeManager.php");
     require("Controller/ChatgptController.php");
     require("Helper.php");
 
     Class ChatController extends View{
 
-        public $JsonFileManager;
-        public $Chatgpt;
+        public object $JsonFileManager;
+        public object $Chatgpt;
+        public object $qrcode;
 
         public function __construct() {
 
             $this->JsonFileManager = JsonFileManager::getInstance('data');
             $this->Chatgpt = Chatgpt::getInstance();
+            $this->qrcode = QrCodeManager::create("imgs","qrcode","svg");
+            $this->qrcode->write();
 
         }
 
