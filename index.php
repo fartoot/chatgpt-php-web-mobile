@@ -7,11 +7,7 @@
 
 
 
-
-
-
-
-    
+    route("","WelcomeController","index");
     route("chat","ChatController","index");
     route("create","ChatController","create");
     route("new","ChatController","new");

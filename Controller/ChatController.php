@@ -1,10 +1,8 @@
 <?php
 
-    require("utilities/View.php");
     require("utilities/JsonFileManager.php");
     require("utilities/QrCodeManager.php");
     require("Controller/ChatgptController.php");
-    require("Helper.php");
 
     Class ChatController extends View{
 
@@ -24,7 +22,9 @@
         public function index(){
 
             $this->JsonFileManager->read();
-            return $this->view("index.php",$this->JsonFileManager->content,$this->Chatgpt->selected);
+            return $this->view("index.php",
+                ["data_json"=>$this->JsonFileManager->content, "selectedData"=>$this->Chatgpt->selected]    
+            );
 
         }
 
@@ -43,13 +43,17 @@
             $this->JsonFileManager->appendContent();
             $this->JsonFileManager->write();
             
-            return $this->view("index.php",$this->JsonFileManager->content,$this->Chatgpt->selected);
+            return $this->view("index.php",
+                ["data_json"=>$this->JsonFileManager->content, "selectedData"=>$this->Chatgpt->selected]    
+            );
 
         }
 
         public function new(){
             $this->JsonFileManager->new();
-            return $this->view("index.php",$this->JsonFileManager->content,$this->Chatgpt->selected);
+            return $this->view("index.php",
+                ["data_json"=>$this->JsonFileManager->content, "selectedData"=>$this->Chatgpt->selected]    
+            );
 
         }
 
