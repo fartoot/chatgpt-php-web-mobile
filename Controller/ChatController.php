@@ -23,19 +23,20 @@
 
             $this->JsonFileManager->read();
             return $this->view("index.php",
-                ["data_json"=>$this->JsonFileManager->content, "selectedData"=>$this->Chatgpt->selected]    
+                ["data_json"=>$this->JsonFileManager->content, "selectedData"=>$this->Chatgpt->selected,"chats"=>$this->JsonFileManager->latest_file,"id"=>$this->JsonFileManager->current]    
             );
 
         }
 
-        public function create($prompt,$selectedChat){
-
-            $this->Chatgpt->selected = $selectedChat;
+        public function create($data){
+            extract($data);
+            $this->JsonFileManager->current = $id; 
+            $this->Chatgpt->selected = $chatgpt;
             $this->store($this->Chatgpt->generate($prompt));
         }
 
         public function store($message){
-
+            
             $this->JsonFileManager->read();
             $this->JsonFileManager->datetime = date("Y-m-d H:i:s");
             $this->JsonFileManager->question = strtoupper($message["question"]);
@@ -44,7 +45,7 @@
             $this->JsonFileManager->write();
             
             return $this->view("index.php",
-                ["data_json"=>$this->JsonFileManager->content, "selectedData"=>$this->Chatgpt->selected]    
+                ["data_json"=>$this->JsonFileManager->content, "selectedData"=>$this->Chatgpt->selected,"chats"=>$this->JsonFileManager->latest_file,"id"=>$this->JsonFileManager->current]    
             );
 
         }
@@ -52,9 +53,17 @@
         public function new(){
             $this->JsonFileManager->new();
             return $this->view("index.php",
-                ["data_json"=>$this->JsonFileManager->content, "selectedData"=>$this->Chatgpt->selected]    
+                ["data_json"=>$this->JsonFileManager->content, "selectedData"=>$this->Chatgpt->selected,"chats"=>$this->JsonFileManager->latest_file,"id"=>$this->JsonFileManager->current]    
             );
 
+        }
+
+        public function show($data){
+            extract($data);
+            $this->JsonFileManager->show($id);
+            return $this->view("index.php",
+                ["data_json"=>$this->JsonFileManager->content, "selectedData"=>$this->Chatgpt->selected,"chats"=>$this->JsonFileManager->latest_file,"id"=>$this->JsonFileManager->current]    
+            );
         }
 
     }

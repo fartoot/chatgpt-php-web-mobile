@@ -5,6 +5,7 @@
 
 
         public int $latest_file;
+        public int $current;
         public array $content;
         public string $question;
         public string $answer;
@@ -36,10 +37,14 @@
                 }
             }
             $this->latest_file = intval($last);
+            if($this->latest_file == 0){
+                $this->new();
+            }
+            $this->current = $this->latest_file;
         }
 
         public function read(){
-            $json_encode = file_get_contents($this->dir."/".strval($this->latest_file).".".$this->extension);
+            $json_encode = file_get_contents($this->dir."/".strval($this->current).".".$this->extension);
             $this->content =  json_decode($json_encode, true);
         }
 
@@ -51,17 +56,24 @@
         }
 
         public function write(){
-            file_put_contents("data/".strval($this->latest_file).".json", json_encode($this->content));
+            file_put_contents("$this->dir/".strval($this->current).".$this->extension", json_encode($this->content));
         }
 
         public function new(){
             $this->latest_file = $this->latest_file + 1;
+            $this->current = $this->latest_file;
+            
             $this->content = [
                 "status"=> "active",
                 "date"=> date("Y-m-d H:i:s"),
                 "answers" => []
                         ];
             $this->write();
+        }
+
+        public function show($id){
+            $this->current = $id;
+            $this->read();
         }
 
     }

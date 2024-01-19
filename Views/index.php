@@ -30,23 +30,25 @@
                                         </div>
 
                                         <div class="grid grid-cols-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 h-full overflow-y-auto">
-                                                <a href="#1" class="flex justify-center items-center aspect-square border-2 border-slate-400 focus:ring-2 hover:ring-slate-400 rounded-lg hover:bg-white focus:bg-white hover:shadow-lg">
-                                                        <span class="text-slate-800">1</span>
-                                                </a>
-                                                <a href="#1" class="flex justify-center items-center aspect-square border-2 border-slate-400 focus:ring-2 hover:ring-slate-400 rounded-lg hover:bg-white focus:bg-white hover:shadow-lg">
-                                                        <span class="text-slate-800">2</span>
-                                                </a>
-                                                <a href="#1" class="flex justify-center items-center aspect-square border-2 border-slate-400 focus:ring-2 hover:ring-slate-400 rounded-lg hover:bg-white focus:bg-white hover:shadow-lg">
-                                                        <span class="text-slate-800">10</span>
-                                                </a>
-                                                <a href="#1" class="flex justify-center items-center aspect-square border-2 border-slate-400 focus:ring-2 hover:ring-slate-400 rounded-lg hover:bg-white focus:bg-white hover:shadow-lg">
-                                                        <span class="text-slate-800">100</span>
-                                                </a>
+                                                <?php for ($i = $chats; $i >= 1; $i--) {
+                                                        if ($i == $id) {
+                                                ?>
+                                                                <a href="/show/<?= $i ?>" class="flex justify-center items-center aspect-square border-2 border-slate-400 bg-white focus:ring-2 hover:ring-slate-400 rounded-lg hover:bg-white focus:bg-white hover:shadow-lg">
+                                                                        <span class="text-slate-800"><?= $i ?></span>
+                                                                </a>
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <a href="/show/<?= $i ?>" class="flex justify-center items-center aspect-square border-2 border-slate-400 focus:ring-2 hover:ring-slate-400 rounded-lg hover:bg-white focus:bg-white hover:shadow-lg">
+                                                                <span class="text-slate-800"><?= $i ?></span>
+                                                        </a>
+                                                <?php }} ?>
+
                                         </div>
                                 </div>
 
                                 <div class="hidden md:inline">
-                                                <img class="w-1/2 xl:w-1/3 mx-auto m-3 rounded-lg" src="imgs/qrcode.svg" alt="">
+                                        <img class="w-1/2 xl:w-1/3 mx-auto m-3 rounded-lg" src="/imgs/qrcode.svg" alt="">
                                 </div>
                         </div>
                 </div>
@@ -85,8 +87,8 @@
                                                 echo $Parsedown->text($answer["answer"]);
                                                 echo "</div>";
                                         }
-
                                         ?>
+
                                         <div id="loading" class='hidden flex m-4 space-x-2 justify-center items-center dark:invert'>
                                                 <span class='sr-only'>Loading...</span>
                                                 <div class='h-3 w-3 bg-slate-600 rounded-full animate-bounce [animation-delay:-0.3s]'></div>
@@ -96,7 +98,7 @@
                                 </div>
 
                                 <div class="w-full">
-                                        <form action="create" method="post" onSubmit="return loading()">
+                                        <form action="/create/<?= $id ?>" method="post" onSubmit="return loading()">
                                                 <input type="hidden" name="chagpt" id="selectedChagpt" value="<?= $chatgpt ?>">
                                                 <input type="text" class="shadow-lg border-2 border-slate-300 hover:border-slate-400 active:border-slate-400 rounded-full h-16 w-full px-8" name="prompt" placeholder="Your prompt ...">
                                         </form>

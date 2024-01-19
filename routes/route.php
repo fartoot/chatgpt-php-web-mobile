@@ -1,7 +1,7 @@
 <?php 
 
     function route($path,$class_name,$method){
-        
+        $attrs = array();
         try {
             require_once("Controller/$class_name.php");
         } catch (\Throwable $th) {
@@ -10,16 +10,19 @@
         
         $url = $_SERVER["REQUEST_URI"];
         
-        $prompt = $_POST["prompt"];
-        $selectedChat = $_POST["chagpt"];
-
+        $attrs["prompt"] = $_POST["prompt"];
+        
+        $attrs["chatgpt"] = $_POST["chagpt"];
+        
+        
         $parent = explode("/",$url);
+        $attrs["id"] = $parent[2];
         $parent = $parent[1];
-
+        
         switch ($parent) {
             case $path:
                     $chat = new $class_name();
-                    $chat->$method($prompt,$selectedChat);
+                    $chat->$method($attrs);
                 break;
                 
             default:
