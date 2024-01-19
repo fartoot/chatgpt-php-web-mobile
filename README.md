@@ -1,3 +1,8 @@
+# Overview
+Web | Mobile
+--- | ---
+![Web](web.png) | ![Mobile](mobile.png)
+
 # Goal
 My goal for creating this project is to build a basic chat interface purely using core PHP and JSON for storage conversations. It is designed to be simple and able to run on local network. it also supports usage with mobile device by scanning IP address via QR code.
 
