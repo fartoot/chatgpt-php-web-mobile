@@ -5,20 +5,19 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-
+        <link rel="stylesheet" href="/resources/style/style.css">
 
         <style>
-                code {
+                /* code {
                         word-break: break-work;
-                }
+                } */
 
                 /* 
                 .language-bash{
                         background-color:antiquewhite;
                 } */
 
-                pre {
+                /* pre {
                         background-color: #1e1e1e;
                         color: white;
                         padding: 10px;
@@ -27,11 +26,11 @@
                         padding: 15px;
                         margin: 20px 0px !important;
 
-                }
-
+                } */
+/* 
                 p > * {
                         word-break: break-all;
-                }
+                } */
         </style>
 </head>
 
