@@ -6,6 +6,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <script src="https://cdn.tailwindcss.com"></script>
+
+
+        <style>
+                code {
+                        word-break: break-work;
+                }
+
+                /* 
+                .language-bash{
+                        background-color:antiquewhite;
+                } */
+
+                pre {
+                        background-color: #1e1e1e;
+                        color: white;
+                        padding: 10px;
+                        word-break: break-all;
+                        border-radius: 12px;
+                        padding: 15px;
+                        margin: 20px 0px !important;
+
+                }
+
+                p > * {
+                        word-break: break-all;
+                }
+        </style>
 </head>
 
 <body>
@@ -37,12 +64,13 @@
                                                                         <span class="text-slate-800"><?= $i ?></span>
                                                                 </a>
                                                         <?php
-                                                        }else{
+                                                        } else {
                                                         ?>
-                                                        <a href="/show/<?= $i ?>" class="flex justify-center items-center aspect-square border-2 border-slate-400 focus:ring-2 hover:ring-slate-400 rounded-lg hover:bg-white focus:bg-white hover:shadow-lg">
-                                                                <span class="text-slate-800"><?= $i ?></span>
-                                                        </a>
-                                                <?php }} ?>
+                                                                <a href="/show/<?= $i ?>" class="flex justify-center items-center aspect-square border-2 border-slate-400 focus:ring-2 hover:ring-slate-400 rounded-lg hover:bg-white focus:bg-white hover:shadow-lg">
+                                                                        <span class="text-slate-800"><?= $i ?></span>
+                                                                </a>
+                                                <?php }
+                                                } ?>
 
                                         </div>
                                 </div>
