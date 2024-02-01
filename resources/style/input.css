@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer base{
+    code {
+        @apply whitespace-break-spaces;
+    }
+    pre{
+        @apply break-words;
+        @apply bg-slate-800;
+        @apply text-white;
+        @apply py-5;
+        @apply px-4;
+        @apply my-2;
+        @apply rounded-xl;
+        @apply font-mono;
+        
+    }
+    
+}
